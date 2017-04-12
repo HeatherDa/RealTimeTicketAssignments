@@ -16,5 +16,10 @@ namespace TicketAssignment
         {
             InitializeComponent();
         }
+
+        private void btnIssueTicket_Click(object sender, EventArgs e)
+        {
+             
+        }
     }
 }

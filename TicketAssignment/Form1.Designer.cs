@@ -14,7 +14,7 @@
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
+            { 
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -30,14 +30,14 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblNextEntryTime = new System.Windows.Forms.Label();
+            this.lblOutstandingTotal = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.btnIssueTicket = new System.Windows.Forms.Button();
             this.lstTickets = new System.Windows.Forms.ListBox();
             this.btnOptions = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnIssueTicket = new System.Windows.Forms.Button();
-            this.lbl1 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblOutstandingTotal = new System.Windows.Forms.Label();
-            this.lblNextEntryTime = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +64,52 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ticket Availability";
             // 
+            // lblNextEntryTime
+            // 
+            this.lblNextEntryTime.AutoSize = true;
+            this.lblNextEntryTime.Location = new System.Drawing.Point(144, 44);
+            this.lblNextEntryTime.Name = "lblNextEntryTime";
+            this.lblNextEntryTime.Size = new System.Drawing.Size(13, 13);
+            this.lblNextEntryTime.TabIndex = 4;
+            this.lblNextEntryTime.Text = "_";
+            // 
+            // lblOutstandingTotal
+            // 
+            this.lblOutstandingTotal.AutoSize = true;
+            this.lblOutstandingTotal.Location = new System.Drawing.Point(144, 17);
+            this.lblOutstandingTotal.Name = "lblOutstandingTotal";
+            this.lblOutstandingTotal.Size = new System.Drawing.Size(13, 13);
+            this.lblOutstandingTotal.TabIndex = 3;
+            this.lblOutstandingTotal.Text = "_";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Next available entry: ";
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.Location = new System.Drawing.Point(9, 17);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(129, 13);
+            this.lbl1.TabIndex = 1;
+            this.lbl1.Text = "Total tickets outstanding: ";
+            // 
+            // btnIssueTicket
+            // 
+            this.btnIssueTicket.Location = new System.Drawing.Point(7, 73);
+            this.btnIssueTicket.Name = "btnIssueTicket";
+            this.btnIssueTicket.Size = new System.Drawing.Size(75, 23);
+            this.btnIssueTicket.TabIndex = 0;
+            this.btnIssueTicket.Text = "Issue Ticket";
+            this.btnIssueTicket.UseVisualStyleBackColor = true;
+            this.btnIssueTicket.Click += new System.EventHandler(this.btnIssueTicket_Click);
+            // 
             // lstTickets
             // 
             this.lstTickets.FormattingEnabled = true;
@@ -89,51 +135,6 @@
             this.btnExit.TabIndex = 4;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
-            // 
-            // btnIssueTicket
-            // 
-            this.btnIssueTicket.Location = new System.Drawing.Point(7, 73);
-            this.btnIssueTicket.Name = "btnIssueTicket";
-            this.btnIssueTicket.Size = new System.Drawing.Size(75, 23);
-            this.btnIssueTicket.TabIndex = 0;
-            this.btnIssueTicket.Text = "Issue Ticket";
-            this.btnIssueTicket.UseVisualStyleBackColor = true;
-            // 
-            // lbl1
-            // 
-            this.lbl1.AutoSize = true;
-            this.lbl1.Location = new System.Drawing.Point(9, 17);
-            this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(129, 13);
-            this.lbl1.TabIndex = 1;
-            this.lbl1.Text = "Total tickets outstanding: ";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 44);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Next available entry: ";
-            // 
-            // lblOutstandingTotal
-            // 
-            this.lblOutstandingTotal.AutoSize = true;
-            this.lblOutstandingTotal.Location = new System.Drawing.Point(144, 17);
-            this.lblOutstandingTotal.Name = "lblOutstandingTotal";
-            this.lblOutstandingTotal.Size = new System.Drawing.Size(13, 13);
-            this.lblOutstandingTotal.TabIndex = 3;
-            this.lblOutstandingTotal.Text = "_";
-            // 
-            // lblNextEntryTime
-            // 
-            this.lblNextEntryTime.AutoSize = true;
-            this.lblNextEntryTime.Location = new System.Drawing.Point(144, 44);
-            this.lblNextEntryTime.Name = "lblNextEntryTime";
-            this.lblNextEntryTime.Size = new System.Drawing.Size(13, 13);
-            this.lblNextEntryTime.TabIndex = 4;
-            this.lblNextEntryTime.Text = "_";
             // 
             // Form1
             // 
