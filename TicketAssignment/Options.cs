@@ -16,5 +16,15 @@ namespace TicketAssignment
         {
             InitializeComponent();
         }
+
+        private void txtStartTime_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        //Minutes per window has numericUpDown control (verify not 0)
+        //Guests per window has numbericUpDown control (verify not 0)
+        //start and end time textboxes (need to validate time format)
+        //first ticket number is numericUpDown control (verify not 0)
+        //divide TimeSpan between start and end by numMinPerWindow and create timeslot object for each of the resulting intervals.  Store these obejects in a collection
     }
 }

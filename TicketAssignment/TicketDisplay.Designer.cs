@@ -1,6 +1,6 @@
 ﻿namespace TicketAssignment
 {
-    partial class Form1
+    partial class TicketDisplay
     {
         /// <summary>
         /// Required designer variable.

@@ -35,12 +35,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.numMinPerWindow = new System.Windows.Forms.NumericUpDown();
             this.numGuestsperWindow = new System.Windows.Forms.NumericUpDown();
-            this.txtEndTime = new System.Windows.Forms.TextBox();
-            this.txtFirstNum = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
-            this.txtStartTime = new System.Windows.Forms.TextBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.numMinPerWindow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGuestsperWindow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -102,20 +103,6 @@
             this.numGuestsperWindow.Size = new System.Drawing.Size(120, 20);
             this.numGuestsperWindow.TabIndex = 7;
             // 
-            // txtEndTime
-            // 
-            this.txtEndTime.Location = new System.Drawing.Point(123, 115);
-            this.txtEndTime.Name = "txtEndTime";
-            this.txtEndTime.Size = new System.Drawing.Size(120, 20);
-            this.txtEndTime.TabIndex = 9;
-            // 
-            // txtFirstNum
-            // 
-            this.txtFirstNum.Location = new System.Drawing.Point(123, 150);
-            this.txtFirstNum.Name = "txtFirstNum";
-            this.txtFirstNum.Size = new System.Drawing.Size(120, 20);
-            this.txtFirstNum.TabIndex = 10;
-            // 
             // btnOK
             // 
             this.btnOK.Location = new System.Drawing.Point(123, 194);
@@ -125,22 +112,40 @@
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             // 
-            // txtStartTime
+            // numericUpDown1
             // 
-            this.txtStartTime.Location = new System.Drawing.Point(123, 81);
-            this.txtStartTime.Name = "txtStartTime";
-            this.txtStartTime.Size = new System.Drawing.Size(120, 20);
-            this.txtStartTime.TabIndex = 12;
+            this.numericUpDown1.Location = new System.Drawing.Point(123, 151);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 13;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker1.Location = new System.Drawing.Point(123, 78);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShowUpDown = true;
+            this.dateTimePicker1.Size = new System.Drawing.Size(120, 20);
+            this.dateTimePicker1.TabIndex = 14;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker2.Location = new System.Drawing.Point(123, 112);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.ShowUpDown = true;
+            this.dateTimePicker2.Size = new System.Drawing.Size(120, 20);
+            this.dateTimePicker2.TabIndex = 15;
             // 
             // Options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(258, 230);
-            this.Controls.Add(this.txtStartTime);
+            this.ClientSize = new System.Drawing.Size(259, 230);
+            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.txtFirstNum);
-            this.Controls.Add(this.txtEndTime);
             this.Controls.Add(this.numGuestsperWindow);
             this.Controls.Add(this.numMinPerWindow);
             this.Controls.Add(this.label5);
@@ -152,6 +157,7 @@
             this.Text = "Options";
             ((System.ComponentModel.ISupportInitialize)(this.numMinPerWindow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGuestsperWindow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,9 +172,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown numMinPerWindow;
         private System.Windows.Forms.NumericUpDown numGuestsperWindow;
-        private System.Windows.Forms.TextBox txtEndTime;
-        private System.Windows.Forms.TextBox txtFirstNum;
         private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.TextBox txtStartTime;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }
