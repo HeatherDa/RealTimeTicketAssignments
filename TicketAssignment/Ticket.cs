@@ -8,5 +8,19 @@ namespace TicketAssignment
 {
     class Ticket
     {
+        public int ticketNumber;
+        public TimeSlot timeSlotAssigned; 
+
+        public Ticket(int prevTicket, TimeSlot time)
+        {
+            this.ticketNumber = newNumber(prevTicket);
+            this.timeSlotAssigned = time;
+        }
+
+        private int newNumber(int prevTicket)
+        {
+            return prevTicket+1;
+        }
     }
+
 }

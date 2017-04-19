@@ -16,7 +16,7 @@ namespace TicketAssignment
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TicketDisplay());
+            Application.Run(new Options());//run options form first
         }
     }
 }

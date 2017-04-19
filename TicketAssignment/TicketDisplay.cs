@@ -12,6 +12,7 @@ namespace TicketAssignment
 {
     public partial class TicketDisplay : Form
     {
+        int ticketCounter = 0;//increment for calculating current ticket number
         public TicketDisplay()
         {
             InitializeComponent();
@@ -19,7 +20,8 @@ namespace TicketAssignment
 
         private void btnIssueTicket_Click(object sender, EventArgs e)
         {
-             
+             //stores current ticket number 
+             //when each ticket is issued, +1 to ticketCounter.
         }
     }
 }
