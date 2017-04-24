@@ -16,15 +16,60 @@ namespace TicketAssignment
         {
             InitializeComponent();
         }
+        public int startTimeSlot;
+        public int endTimeSlot;
+        public int timeWindow;
+        public int guestNumber;
+        public int firstTicket;
 
-        private void txtStartTime_TextChanged(object sender, EventArgs e)
+        private void dtpStartTime_ValueChanged(object sender, EventArgs e)
         {
-
+            //converting start time to int RL
+            DateTime dtStart = dtpStartTime.Value;
+            string dtStartS = dtStart.Hour.ToString() + dtStart.Minute.ToString() + dtStart.Second.ToString();
+            int startTimeSlot = Convert.ToInt32(dtStart);
         }
-        //Minutes per window has numericUpDown control (verify not 0)
-        //Guests per window has numbericUpDown control (verify not 0)
-        //start and end time textboxes (need to validate time format)
-        //first ticket number is numericUpDown control (verify not 0)
+
+        private void dtpEndTime_ValueChanged(object sender, EventArgs e)
+        {
+            //converting end time to Int RL
+            DateTime dtEnd = dtpEndTime.Value;
+            string dtEndS = dtEnd.Hour.ToString() + dtEnd.Minute.ToString() + dtEnd.Second.ToString();
+            endTimeSlot = Convert.ToInt32(dtEndS);
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            if (endTimeSlot <= startTimeSlot)
+            {
+                //Displays error box if end time is before or the same as start time RL
+                MessageBox.Show("End time must be later than the start time.", "Time entry error");
+                dtpEndTime.Focus();
+            }
+            //Could do a switch for this instead
+            //to include specific field name in error RL
+            if (timeWindow == 0 || guestNumber == 0 || firstTicket == 0)
+            {
+                MessageBox.Show("Minutes per window, Guests per window, and first ticket number must be greater than zero",
+                    "Error.");
+            }
+            else
+            {
+                this.Close();
+            }
+        }
+        private void numMinPerWindow_ValueChanged(object sender, EventArgs e)
+        {
+            //Convert time Window to int RL
+            int timeWindow = Convert.ToInt32(numMinPerWindow);
+        }
+
+        private void numGuestsPerWindow_ValueChanged(object sender, EventArgs e)
+        {
+            //convert number of guests to Int RL
+            int guestNumber = Convert.ToInt32(numGuestsPerWindow);
+        }
+
         //divide TimeSpan between start and end by numMinPerWindow and create timeslot object for each of the resulting intervals.  Store these obejects in a collection
     }
 }

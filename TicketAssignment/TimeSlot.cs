@@ -12,7 +12,6 @@ namespace TicketAssignment
         public DateTime startTimeSlot;
         public TimeSpan slotInterval;
         public int totalTicketsPerSlot;
-
         //constructor (Start and end time from options menu)
 
         //get time slot end time (startTimeSlot+SlotInterval)
@@ -54,6 +53,18 @@ namespace TicketAssignment
             set
             {
                 totalTicketsPerSlot = value;
+            }
+        }
+        public int endTime
+        {
+            //working on retrieving from options form to calculate 
+           get
+            {
+                return endTime;
+            }
+            set
+            {
+                endTime = value;
             }
         }
     }
