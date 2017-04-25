@@ -16,11 +16,13 @@ namespace TicketAssignment
         {
             InitializeComponent();
         }
+
         public int startTimeSlot;
         public int endTimeSlot;
         public int timeWindow;
         public int guestNumber;
         public int firstTicket;
+        public TicketingSystem ticketingSystem;
 
         private void dtpStartTime_ValueChanged(object sender, EventArgs e)
         {
@@ -71,5 +73,13 @@ namespace TicketAssignment
         }
 
         //divide TimeSpan between start and end by numMinPerWindow and create timeslot object for each of the resulting intervals.  Store these obejects in a collection
+
+        /*
+        DateTime startTimeSlot = DateTime.Now;
+        DateTime endTimeSlot = startTimeSlot.AddHours(4);
+        int minutesPerWindow = 5;
+        ticketingSystem.createList(startTimeSlot, endTimeSlot, minutesPerWindow);
+        */
     }
+
 }

@@ -23,5 +23,12 @@ namespace TicketAssignment
              //stores current ticket number 
              //when each ticket is issued, +1 to ticketCounter.
         }
+
+        private void btnOptions_Click(object sender, EventArgs e)
+        {
+            Options Options = new Options();
+            Options.Show();
+
+        }
     }
 }

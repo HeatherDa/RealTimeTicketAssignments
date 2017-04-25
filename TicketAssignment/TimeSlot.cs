@@ -16,11 +16,11 @@ namespace TicketAssignment
 
         //get time slot end time (startTimeSlot+SlotInterval)
 
-        public TimeSlot(DateTime startTimeSlot, TimeSpan slotInterval, int totalTicketsPerSlot)
+        public TimeSlot(DateTime startTimeSlot, TimeSpan slotInterval)
         {
             this.startTimeSlot = startTimeSlot;
             this.slotInterval = slotInterval;
-            this.totalTicketsPerSlot = totalTicketsPerSlot;
+            this.totalTicketsPerSlot = 0;
         }
         public DateTime StartTimeSlot
         {
@@ -44,6 +44,7 @@ namespace TicketAssignment
                 slotInterval = value;
             }
         }
+        //number of tickets that have been assigned so far to this slot 
         public int TotalTicketsPerSlot
         {
             get
