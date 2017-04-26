@@ -20,16 +20,10 @@ namespace TicketAssignment
         public int startTime;
         public int endTime;
         public int timeWindow;
-<<<<<<< HEAD
         public int numberOfGuests;
         public int firstTicketNumber;
-        public int timeSpan;
         public TicketingSystem ticketingSystem;
-=======
-        public int guestNumber;
-        public int firstTicket;
      //   public TicketingSystem ticketingSystem;
->>>>>>> origin/master
 
         private void dtpStartTime_ValueChanged(object sender, EventArgs e)
         {
@@ -62,11 +56,7 @@ namespace TicketAssignment
                 MessageBox.Show("Minutes per window, Guests per window, and first ticket number must be greater than zero",
                     "Error.");
             }
-            if (timeSpan > 0)
-            {
-                string test = Convert.ToString(timeSpan);
-                MessageBox.Show(test, ".");
-            }
+
             else
             {
                 this.Close();
@@ -83,14 +73,6 @@ namespace TicketAssignment
             //convert number of guests to Int RL
             int guestNumber = Convert.ToInt32(numGuestsPerWindow);
         }
-
-        public int GetTimeSpan()
-        {
-            timeSpan = endTime - startTime;
-            return timeSpan;
-
-        }
-        //divide TimeSpan between start and end by numMinPerWindow and create timeslot object for each of the resulting intervals.  Store these obejects in a collection
 
         /*
         DateTime startTimeSlot = DateTime.Now;
