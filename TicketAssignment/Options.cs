@@ -33,7 +33,7 @@ namespace TicketAssignment
             int startTime = Convert.ToInt32(dtStart);
         }
 
-        private void dtpEndTime_ValueChanged(object sender, EventArgs e)
+        private void dtpEndTime_ValueChanged(object sender, EventArgs e)//make sure endTime not before startTime
         {
             //converting end time to Int RL
             DateTime dtEnd = dtpEndTime.Value;
@@ -80,6 +80,7 @@ namespace TicketAssignment
         int minutesPerWindow = 5;
         ticketingSystem.createList(startTimeSlot, endTimeSlot, minutesPerWindow);
         */
+        
     }
 
 }
