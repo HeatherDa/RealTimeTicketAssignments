@@ -9,54 +9,20 @@ namespace TicketAssignment
 
     class TimeSlot
     {
-        public DateTime startTimeSlot;
-        public TimeSpan slotInterval;
-        public int totalTicketsPerSlot;
-        //constructor (Start and end time from options menu)
+        public DateTime startTimeSlot { get; set; }
+        public string slotInterval { get; set; }
+        public int totalTicketsPerSlot { get; set; }
+        
 
-        //get time slot end time (startTimeSlot+SlotInterval)
-
-        public TimeSlot(DateTime startTimeSlot, TimeSpan slotInterval)
+        public TimeSlot(DateTime startTimeSlot, string slotInterval)//start time and interval from options form
         {
             this.startTimeSlot = startTimeSlot;
             this.slotInterval = slotInterval;
             this.totalTicketsPerSlot = 0;
+            this.endTime = endTime;
         }
-        public DateTime StartTimeSlot
-        {
-            get
-            {
-                return startTimeSlot;
-            }
-            set
-            {
-                startTimeSlot = value;
-            }
-        }
-        public TimeSpan SlotInterval
-        {
-            get
-            {
-                return slotInterval;
-            }
-            set
-            {
-                slotInterval = value;
-            }
-        }
-        //number of tickets that have been assigned so far to this slot 
-        public int TotalTicketsPerSlot
-        {
-            get
-            {
-                return totalTicketsPerSlot;
-            }
-            set
-            {
-                totalTicketsPerSlot = value;
-            }
-        }
-        public int endTime
+       
+        public DateTime endTime//calculate end time
         {
             //working on retrieving from options form to calculate 
            get
@@ -65,7 +31,7 @@ namespace TicketAssignment
             }
             set
             {
-                endTime = value;
+                endTime = startTimeSlot.AddMinutes(double.Parse(slotInterval));
             }
         }
     }

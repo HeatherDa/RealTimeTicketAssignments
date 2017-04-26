@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,24 +13,16 @@ namespace TicketAssignment
     public partial class TicketDisplay : Form
     {
         int ticketCounter = 0;//increment for calculating current ticket number
-       
-
         public TicketDisplay()
         {
             InitializeComponent();
-
-            Timer showTime = new Timer();
-            showTime.Interval = 500;
-            showTime.Tick += new EventHandler(showTime_tick);
-            showTime.Start();
-            //this.Text = DateTime.Now.ToString("HH:mm:ss");
-            //put in whether or not ticket is open or not *later*
         }
 
         private void btnIssueTicket_Click(object sender, EventArgs e)
         {
              //stores current ticket number 
              //when each ticket is issued, +1 to ticketCounter.
+             //method to add ticket info 
         }
 
         private void btnOptions_Click(object sender, EventArgs e)
@@ -40,11 +32,7 @@ namespace TicketAssignment
 
         }
 
-        private void showTime_tick(object sender, EventArgs e)
-        {
-
-            Text = "Current Time: " + DateTime.Now.ToString("HH:mm:ss");
-        }
+        
     }
-    }
-
+}
+*/
