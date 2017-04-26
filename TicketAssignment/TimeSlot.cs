@@ -10,14 +10,14 @@ namespace TicketAssignment
     class TimeSlot
     {
         public DateTime startTimeSlot { get; set; }
-        public string SlotInterval { get; set; }
+        public string slotInterval { get; set; }
         public int totalTicketsPerSlot { get; set; }
         
 
         public TimeSlot(DateTime startTimeSlot, string slotInterval)//start time and interval from options form
         {
             this.startTimeSlot = startTimeSlot;
-            this.SlotInterval = slotInterval;
+            this.slotInterval = slotInterval;
             this.totalTicketsPerSlot = 0;
             this.endTime = endTime;
         }
@@ -31,7 +31,7 @@ namespace TicketAssignment
             }
             set
             {
-                endTime = startTimeSlot.AddMinutes(double.Parse(SlotInterval));
+                endTime = startTimeSlot.AddMinutes(double.Parse(slotInterval));
             }
         }
     }

@@ -17,11 +17,12 @@ namespace TicketAssignment
             InitializeComponent();
         }
 
-        public int startTimeSlot;
-        public int endTimeSlot;
+        public int startTime;
+        public int endTime;
         public int timeWindow;
-        public int guestNumber;
-        public int firstTicket;
+        public int numberOfGuests;
+        public int firstTicketNumber;
+        public int timeSpan;
         public TicketingSystem ticketingSystem;
 
         private void dtpStartTime_ValueChanged(object sender, EventArgs e)
@@ -29,7 +30,7 @@ namespace TicketAssignment
             //converting start time to int RL
             DateTime dtStart = dtpStartTime.Value;
             string dtStartS = dtStart.Hour.ToString() + dtStart.Minute.ToString() + dtStart.Second.ToString();
-            int startTimeSlot = Convert.ToInt32(dtStart);
+            int startTime = Convert.ToInt32(dtStart);
         }
 
         private void dtpEndTime_ValueChanged(object sender, EventArgs e)
@@ -37,12 +38,12 @@ namespace TicketAssignment
             //converting end time to Int RL
             DateTime dtEnd = dtpEndTime.Value;
             string dtEndS = dtEnd.Hour.ToString() + dtEnd.Minute.ToString() + dtEnd.Second.ToString();
-            endTimeSlot = Convert.ToInt32(dtEndS);
+            endTime = Convert.ToInt32(dtEndS);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (endTimeSlot <= startTimeSlot)
+            if (endTime <= startTime)
             {
                 //Displays error box if end time is before or the same as start time RL
                 MessageBox.Show("End time must be later than the start time.", "Time entry error");
@@ -50,10 +51,15 @@ namespace TicketAssignment
             }
             //Could do a switch for this instead
             //to include specific field name in error RL
-            if (timeWindow == 0 || guestNumber == 0 || firstTicket == 0)
+            if (timeWindow == 0 || numberOfGuests == 0 || firstTicketNumber == 0)
             {
                 MessageBox.Show("Minutes per window, Guests per window, and first ticket number must be greater than zero",
                     "Error.");
+            }
+            if (timeSpan > 0)
+            {
+                string test = Convert.ToString(timeSpan);
+                MessageBox.Show(test, ".");
             }
             else
             {
@@ -72,6 +78,12 @@ namespace TicketAssignment
             int guestNumber = Convert.ToInt32(numGuestsPerWindow);
         }
 
+        public int GetTimeSpan()
+        {
+            timeSpan = endTime - startTime;
+            return timeSpan;
+
+        }
         //divide TimeSpan between start and end by numMinPerWindow and create timeslot object for each of the resulting intervals.  Store these obejects in a collection
 
         /*
