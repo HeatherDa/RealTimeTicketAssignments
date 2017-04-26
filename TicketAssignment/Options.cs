@@ -22,7 +22,7 @@ namespace TicketAssignment
         public int timeWindow;
         public int guestNumber;
         public int firstTicket;
-        public TicketingSystem ticketingSystem;
+     //   public TicketingSystem ticketingSystem;
 
         private void dtpStartTime_ValueChanged(object sender, EventArgs e)
         {
