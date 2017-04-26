@@ -8,7 +8,7 @@ namespace TicketAssignment
 {
     public class TicketingSystem
     {
-        private List<TimeSlot> TimeSlots;
+        public List<TimeSlot> TimeSlots;
         public int numberTicketsPerSlot;
 
         public void createList(DateTime startTimeSlot, DateTime endTimeSlot, int minutesPerWindow)
@@ -26,5 +26,22 @@ namespace TicketAssignment
             }
         }
 
+
+
+        public List<Ticket> TicketsIssued;
+        //method will be attached to click handler when user adds ticket 
+        public void createTicketList(DateTime timeslot, int ticketNumber)
+        {
+            TicketsIssued = new List<Ticket>();
+            Ticket stuffs = new Ticket(timeslot, ticketNumber);
+            TicketsIssued.Add(stuffs);
+            //adds to listbox 
+            int numberTickets = TicketsIssued.Count;
+            //changes lable to refect number of tickets 
+            lblOutstandingTotal.Text = Convert.ToString(numberTickets);
+
+        }
+
     }
 }
+

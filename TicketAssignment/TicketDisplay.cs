@@ -22,6 +22,7 @@ namespace TicketAssignment
         {
              //stores current ticket number 
              //when each ticket is issued, +1 to ticketCounter.
+             //method to add ticket info 
         }
 
         private void btnOptions_Click(object sender, EventArgs e)
@@ -30,6 +31,8 @@ namespace TicketAssignment
             Options.Show();
 
         }
+
+        
     }
 }
 */

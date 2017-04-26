@@ -20,10 +20,16 @@ namespace TicketAssignment
         public int startTime;
         public int endTime;
         public int timeWindow;
+<<<<<<< HEAD
         public int numberOfGuests;
         public int firstTicketNumber;
         public int timeSpan;
         public TicketingSystem ticketingSystem;
+=======
+        public int guestNumber;
+        public int firstTicket;
+     //   public TicketingSystem ticketingSystem;
+>>>>>>> origin/master
 
         private void dtpStartTime_ValueChanged(object sender, EventArgs e)
         {
