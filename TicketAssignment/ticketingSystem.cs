@@ -8,7 +8,7 @@ namespace TicketAssignment
 {
     public class TicketingSystem
     {
-        public List<TimeSlot> TimeSlots;
+        public List<TimeSlot>TimeSlots;
         public int numberTicketsPerSlot;
 
         public void createList(DateTime startTimeSlot, DateTime endTimeSlot, int minutesPerWindow)

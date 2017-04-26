@@ -15,6 +15,12 @@ namespace TicketAssignment
         public Options()
         {
             InitializeComponent();
+            Timer showTime = new Timer();
+            showTime.Interval = 500;
+             showTime.Tick += new EventHandler(showTime_tick);
+            showTime.Start();
+                       //this.Text = DateTime.Now.ToString("HH:mm:ss"); 
+
         }
 
         public int startTime;
@@ -80,7 +86,16 @@ namespace TicketAssignment
         int minutesPerWindow = 5;
         ticketingSystem.createList(startTimeSlot, endTimeSlot, minutesPerWindow);
         */
-        
+
+
+
+        private void showTime_tick(object sender, EventArgs e)
+        {
+
+            Text = "-Options- Current Time: " + DateTime.Now.ToString("HH:mm:ss");
+        }
+
     }
+
 
 }
