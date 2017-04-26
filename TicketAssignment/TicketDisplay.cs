@@ -13,9 +13,18 @@ namespace TicketAssignment
     public partial class TicketDisplay : Form
     {
         int ticketCounter = 0;//increment for calculating current ticket number
+       
+
         public TicketDisplay()
         {
             InitializeComponent();
+
+            Timer showTime = new Timer();
+            showTime.Interval = 500;
+            showTime.Tick += new EventHandler(showTime_tick);
+            showTime.Start();
+            //this.Text = DateTime.Now.ToString("HH:mm:ss");
+            //put in whether or not ticket is open or not *later*
         }
 
         private void btnIssueTicket_Click(object sender, EventArgs e)
@@ -30,5 +39,12 @@ namespace TicketAssignment
             Options.Show();
 
         }
+
+        private void showTime_tick(object sender, EventArgs e)
+        {
+
+            Text = "Current Time: " + DateTime.Now.ToString("HH:mm:ss");
+        }
     }
-}
+    }
+

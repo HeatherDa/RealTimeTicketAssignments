@@ -26,6 +26,10 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+
+       
+
+
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -38,6 +42,7 @@
             this.lstTickets = new System.Windows.Forms.ListBox();
             this.btnOptions = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.cboTimeSlots = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +57,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cboTimeSlots);
             this.groupBox2.Controls.Add(this.lblNextEntryTime);
             this.groupBox2.Controls.Add(this.lblOutstandingTotal);
             this.groupBox2.Controls.Add(this.label1);
@@ -104,7 +110,7 @@
             // 
             this.btnIssueTicket.Location = new System.Drawing.Point(7, 73);
             this.btnIssueTicket.Name = "btnIssueTicket";
-            this.btnIssueTicket.Size = new System.Drawing.Size(75, 23);
+            this.btnIssueTicket.Size = new System.Drawing.Size(77, 23);
             this.btnIssueTicket.TabIndex = 0;
             this.btnIssueTicket.Text = "Issue Ticket";
             this.btnIssueTicket.UseVisualStyleBackColor = true;
@@ -137,6 +143,14 @@
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
+            // cboTimeSlots
+            // 
+            this.cboTimeSlots.FormattingEnabled = true;
+            this.cboTimeSlots.Location = new System.Drawing.Point(126, 75);
+            this.cboTimeSlots.Name = "cboTimeSlots";
+            this.cboTimeSlots.Size = new System.Drawing.Size(127, 21);
+            this.cboTimeSlots.TabIndex = 5;
+            // 
             // TicketDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,7 +162,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "TicketDisplay";
-            this.Text = "_";
+            this.Text = "Ticket Program";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -167,6 +181,7 @@
         private System.Windows.Forms.ListBox lstTickets;
         private System.Windows.Forms.Button btnOptions;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.ComboBox cboTimeSlots;
     }
 }
 

@@ -15,6 +15,13 @@ namespace TicketAssignment
         public Options()
         {
             InitializeComponent();
+
+
+            Timer showTime = new Timer();
+            showTime.Interval = 500;
+            showTime.Tick += new EventHandler(showTime_tick);
+            showTime.Start();
+            //this.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
         public int startTimeSlot;
@@ -22,7 +29,7 @@ namespace TicketAssignment
         public int timeWindow;
         public int guestNumber;
         public int firstTicket;
-        public TicketingSystem ticketingSystem;
+        //public TicketingSystem ticketingSystem;
 
         private void dtpStartTime_ValueChanged(object sender, EventArgs e)
         {
@@ -63,13 +70,19 @@ namespace TicketAssignment
         private void numMinPerWindow_ValueChanged(object sender, EventArgs e)
         {
             //Convert time Window to int RL
-            int timeWindow = Convert.ToInt32(numMinPerWindow);
+          //  int timeWindow = Convert.ToInt32(numMinPerWindow);
         }
 
         private void numGuestsPerWindow_ValueChanged(object sender, EventArgs e)
         {
             //convert number of guests to Int RL
             int guestNumber = Convert.ToInt32(numGuestsPerWindow);
+        }
+
+        private void showTime_tick(object sender, EventArgs e)
+        {
+
+            Text ="-Options- Current Time: "+DateTime.Now.ToString("HH:mm:ss");
         }
 
         //divide TimeSpan between start and end by numMinPerWindow and create timeslot object for each of the resulting intervals.  Store these obejects in a collection
