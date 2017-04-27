@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace TicketAssignment
 {
-
+    //represents one slot
     class TimeSlot
     {
         public DateTime startTimeSlot { get; set; }
-        public string slotInterval { get; set; }
+        public int slotInterval { get; set; }
         public int totalTicketsPerSlot { get; set; }
         
 
-        public TimeSlot(DateTime startTimeSlot, string slotInterval)//start time and interval from options form
+        public TimeSlot(DateTime startTimeSlot, int slotInterval)//start time and interval from options form
         {
             this.startTimeSlot = startTimeSlot;
             this.slotInterval = slotInterval;
             this.totalTicketsPerSlot = 0;
-            this.endTime = endTime;
+
         }
-       
+       //time each time slot ends
         public DateTime endTime//calculate end time
         {
             //working on retrieving from options form to calculate 
@@ -29,10 +29,12 @@ namespace TicketAssignment
             {
                 return endTime;
             }
-            set
-            {
-                endTime = startTimeSlot.AddMinutes(double.Parse(slotInterval));
-            }
+
+        }
+
+        public String toString()
+        {
+            return startTimeSlot.ToString();
         }
     }
 

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TicketAssignment
 {
-    public class TicketingSystem
+    class TicketingSystem
     {
         public List<TimeSlot>TimeSlots;
         public int numberTicketsPerSlot;
@@ -21,24 +23,26 @@ namespace TicketAssignment
             for (int x = 0; x < numberofslots; x++)
             {
                 DateTime adjustedStartTime = startTimeSlot.AddMinutes(minutesPerWindow * x);
-                TimeSlot thing = new TimeSlot(adjustedStartTime, lengthSlot);
+                TimeSlot thing = new TimeSlot(adjustedStartTime, minutes);
                 TimeSlots.Add(thing);
             }
+
+
         }
 
 
 
         public List<Ticket> TicketsIssued;
         //method will be attached to click handler when user adds ticket 
-        public void createTicketList(DateTime timeslot, int ticketNumber)
+        public void createTicketList(TimeSlot timeSlot, int ticketNumber)
         {
             TicketsIssued = new List<Ticket>();
-            Ticket stuffs = new Ticket(timeslot, ticketNumber);
+            Ticket stuffs = new Ticket(ticketNumber, timeSlot);
             TicketsIssued.Add(stuffs);
             //adds to listbox 
             int numberTickets = TicketsIssued.Count;
             //changes lable to refect number of tickets 
-            lblOutstandingTotal.Text = Convert.ToString(numberTickets);
+            // lblOutstandingTotal.Text = Convert.ToString(numberTickets);
 
         }
 
