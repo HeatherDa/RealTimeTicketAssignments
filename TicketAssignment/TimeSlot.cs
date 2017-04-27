@@ -11,14 +11,14 @@ namespace TicketAssignment
     {
         public DateTime startTimeSlot { get; set; }
         public int slotInterval { get; set; }
-        public int totalTicketsPerSlot { get; set; }
+        public int totalTicketsIssuedPerSlot { get; set; }
         
 
         public TimeSlot(DateTime startTimeSlot, int slotInterval)//start time and interval from options form
         {
             this.startTimeSlot = startTimeSlot;
             this.slotInterval = slotInterval;
-            this.totalTicketsPerSlot = 0;
+            this.totalTicketsIssuedPerSlot = 0;
 
         }
        //time each time slot ends

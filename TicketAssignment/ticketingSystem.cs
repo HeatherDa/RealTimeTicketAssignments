@@ -32,17 +32,19 @@ namespace TicketAssignment
 
 
 
-        public List<Ticket> TicketsIssued;
-        //method will be attached to click handler when user adds ticket 
-        public void createTicketList(TimeSlot timeSlot, int ticketNumber)
+        public List<Ticket> IssueTicket;
+
+        public TicketingSystem()
         {
-            TicketsIssued = new List<Ticket>();
-            Ticket stuffs = new Ticket(ticketNumber, timeSlot);
-            TicketsIssued.Add(stuffs);
-            //adds to listbox 
-            int numberTickets = TicketsIssued.Count;
-            //changes lable to refect number of tickets 
-            // lblOutstandingTotal.Text = Convert.ToString(numberTickets);
+            this.IssueTicket = new List<Ticket>();
+        }
+        //method will be attached to click handler when user adds ticket 
+        public void IssueOneTicket(TimeSlot timeSlot)
+        {
+
+            Ticket stuffs = new Ticket(timeSlot);
+            IssueTicket.Add(stuffs);
+            timeSlot.totalTicketsIssuedPerSlot++;
 
         }
 

@@ -10,19 +10,28 @@ namespace TicketAssignment
     {
         public int ticketNumber;
         public TimeSlot timeSlotAssigned; 
-
-        public Ticket(int prevTicket, TimeSlot time)
+        //constructor method
+        public Ticket(TimeSlot time)
         {
-            this.ticketNumber = newNumber(prevTicket);
+            this.ticketNumber = newNumber();
             this.timeSlotAssigned = time;
         }
 
-        private int newNumber(int prevTicket)
+
+
+
+        private static int previousTicketNumber = 0;//set to one less than starting number
+
+        private static int newNumber()
         {
-            return prevTicket+1;
+            previousTicketNumber++;
+            return previousTicketNumber;
         }
-   
-        
+
+
+
+
+
 
     }
 

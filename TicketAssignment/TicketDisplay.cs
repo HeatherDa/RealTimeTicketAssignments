@@ -12,7 +12,6 @@ namespace TicketAssignment
 {
     public partial class TicketDisplay : Form
     {
-        int ticketCounter = 0;//increment for calculating current ticket number
         private TicketingSystem ticketingSystem;
         public TicketDisplay()
         {
@@ -22,9 +21,12 @@ namespace TicketAssignment
 
         private void btnIssueTicket_Click(object sender, EventArgs e)
         {
-             //stores current ticket number 
-             //when each ticket is issued, +1 to ticketCounter.
-             //method to add ticket info 
+            TimeSlot selectedTimeSlot = (TimeSlot) cboTimeSlots.SelectedItem;
+
+            ticketingSystem.IssueOneTicket(selectedTimeSlot);
+            //stores current ticket number
+            //when each ticket is issued, +1 to ticketCounter.
+            //method to add ticket info
         }
 
         private void btnOptions_Click(object sender, EventArgs e)
@@ -43,7 +45,7 @@ namespace TicketAssignment
             // show to user, user selects a timeslot...
 
             // get the selected TimeSlot from the combo box
-            TimeSlot selectedTimeSlot = (TimeSlot) cboTimeSlots.SelectedItem;
+
 
             // now we now which one it is!
         }
