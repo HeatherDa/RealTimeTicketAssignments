@@ -15,10 +15,8 @@ namespace TicketAssignment
         public Options()
         {
             InitializeComponent();
-
-
             ticketingSystem = new TicketingSystem();
-
+            ticketDisplay = new TicketDisplay(ticketingSystem, this);
 
             Timer showTime = new Timer();
             showTime.Interval = 500;
@@ -34,6 +32,7 @@ namespace TicketAssignment
         public int numberOfGuests;
         public int firstTicketNumber;
         private TicketingSystem ticketingSystem;
+        private TicketDisplay ticketDisplay;
 
         private void dtpStartTime_ValueChanged(object sender, EventArgs e)
         {
@@ -72,7 +71,8 @@ namespace TicketAssignment
                 //sends info to ticketing system
                 ticketingSystem.setUp( dtpStartTime.Value, dtpEndTime.Value, timeWindow, numberOfGuests,
                  firstTicketNumber);
-                this.Close();
+                this.Hide();
+                this.ticketDisplay.Show();
             }
         }
         private void numMinPerWindow_ValueChanged(object sender, EventArgs e)

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace TicketAssignment
 {
-    class TicketingSystem
+    public class TicketingSystem
     {
         public int numberOfTicketsAllowedPerSlot;
         public List<TimeSlot>TimeSlots;

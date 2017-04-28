@@ -13,10 +13,13 @@ namespace TicketAssignment
     public partial class TicketDisplay : Form
     {
         private TicketingSystem ticketingSystem;
-        public TicketDisplay()
+        private Options options;
+
+        public TicketDisplay(TicketingSystem ticketingSystem, Options options)
         {
             InitializeComponent();
-            ticketingSystem = new TicketingSystem();
+            this.ticketingSystem = ticketingSystem;
+            this.options = options;
         }
 
         private void btnIssueTicket_Click(object sender, EventArgs e)

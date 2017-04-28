@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TicketAssignment
 {
-    class Ticket
+    public class Ticket
     {
         public int ticketNumber;
         public TimeSlot timeSlotAssigned; 

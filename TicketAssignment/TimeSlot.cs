@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace TicketAssignment
 {
     //represents one slot
-    class TimeSlot
+    public class TimeSlot
     {
         public DateTime startTimeSlot { get; set; }
         public int slotInterval { get; set; }
