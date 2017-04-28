@@ -69,6 +69,9 @@ namespace TicketAssignment
 
             else
             {
+                //sends info to ticketing system
+                ticketingSystem.setUp( dtpStartTime.Value, dtpEndTime.Value, timeWindow, numberOfGuests,
+                 firstTicketNumber);
                 this.Close();
             }
         }
@@ -83,14 +86,6 @@ namespace TicketAssignment
             //convert number of guests to Int RL
             int guestNumber = Convert.ToInt32(numGuestsPerWindow);
         }
-
-        /*
-        DateTime startTimeSlot = DateTime.Now;
-        DateTime endTimeSlot = startTimeSlot.AddHours(4);
-        int minutesPerWindow = 5;
-        ticketingSystem.createList(startTimeSlot, endTimeSlot, minutesPerWindow);
-        */
-
 
 
         private void showTime_tick(object sender, EventArgs e)

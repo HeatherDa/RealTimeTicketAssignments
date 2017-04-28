@@ -35,7 +35,7 @@ namespace TicketAssignment
         public override string ToString()
         {
            string TimeSlot =  String.Format("{0:t}", startTimeSlot);
-            return TimeSlot;
+           return TimeSlot;
         }
     }
 

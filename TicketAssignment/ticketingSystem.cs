@@ -10,9 +10,10 @@ namespace TicketAssignment
 {
     class TicketingSystem
     {
+        public int numberOfTicketsAllowedPerSlot;
         public List<TimeSlot>TimeSlots;
-        public int numberTicketsPerSlot;
 
+        //creates list of time slots based on option selections
         public void createList(DateTime startTimeSlot, DateTime endTimeSlot, int minutesPerWindow)
         {
             TimeSpan lengthSlot = endTimeSlot.Subtract(startTimeSlot);
@@ -44,12 +45,69 @@ namespace TicketAssignment
             timeSlot.totalTicketsIssuedPerSlot++;
 
         }
+
+        public void checkHowManyTicketsIssued(int totalTicketsIssuedPerSlot)
+        {
+
+        }
         //takes in all info from options menu
         public void setUp(DateTime startTimeSlot, DateTime endTimeSlot, int minutesPerWindow, int numberOfGuests,
                           int firstTicketNumber)
         {
             createList(startTimeSlot, endTimeSlot, minutesPerWindow);
             Ticket.setNextTicketNumber(firstTicketNumber);
+            numberOfTicketsAllowedPerSlot = numberOfGuests;
+        }
+        //creating a list of available time slots
+        public List<TimeSlot> showAvailablTimeSlots()
+        {
+            List<TimeSlot>AvailableTimeSlots = new List<TimeSlot>();
+
+            for (int x = 0; x < TimeSlots.Count; x++)
+            {
+                bool ticketsAvailable = TimeSlots[x].totalTicketsIssuedPerSlot < numberOfTicketsAllowedPerSlot;
+                bool occursInFuture = TimeSlots[x].startTimeSlot > DateTime.Now;
+                if (ticketsAvailable && occursInFuture)
+                {
+                    AvailableTimeSlots.Add(TimeSlots[x]);
+                }
+
+            }
+            return AvailableTimeSlots;
+        }
+
+        //gets a list of tickets that are outstanding
+        public List<Ticket> getOutstandingTickets()
+        {
+            List<Ticket> OutstandingTickets = new List<Ticket>();
+
+            for (int x = 0; x < IssueTicket.Count; x++)
+            {
+                Ticket ticket = IssueTicket[x];
+                TimeSlot time = ticket.timeSlotAssigned;
+                bool ticketOutstanding = time.startTimeSlot > DateTime.Now;
+                if (ticketOutstanding)
+                    OutstandingTickets.Add(IssueTicket[x]);
+            }
+            return OutstandingTickets;
+        }
+        //gets the ticket numbers that are entering the ride
+        public List<Ticket> getTicketsBoardingNow()
+        {
+            List<Ticket> boardingNowTickets = new List<Ticket>();
+
+            for (int x = 0; x < IssueTicket.Count; x++)
+            {
+                Ticket ticket = IssueTicket[x];
+                TimeSlot time = ticket.timeSlotAssigned;
+                bool ticketBoardings = time.startTimeSlot <= DateTime.Now;
+                bool ticketBoardinge = time.endTime > DateTime.Now;
+                if (ticketBoardinge && ticketBoardings)
+                {
+                    boardingNowTickets.Add(IssueTicket[x]);
+                }
+            }
+            return boardingNowTickets;
         }
 
     }
