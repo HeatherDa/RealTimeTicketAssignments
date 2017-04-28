@@ -18,17 +18,23 @@ namespace TicketAssignment
         }
 
 
+        public static void setNextTicketNumber(int sTicket)
+        {
+            nextTicketNumber = sTicket;
+        }
 
-
-        private static int previousTicketNumber = 0;//set to one less than starting number
+        private static int nextTicketNumber = 1;
 
         private static int newNumber()
         {
-            previousTicketNumber++;
-            return previousTicketNumber;
+            // returns current value, increments afterwards
+            return nextTicketNumber++;
         }
 
-
+        public override string ToString()
+        {
+            return "Ticket " + ticketNumber + ": " + timeSlotAssigned;
+        }
 
 
 

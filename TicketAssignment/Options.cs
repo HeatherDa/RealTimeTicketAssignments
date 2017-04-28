@@ -15,6 +15,11 @@ namespace TicketAssignment
         public Options()
         {
             InitializeComponent();
+
+
+            ticketingSystem = new TicketingSystem();
+
+
             Timer showTime = new Timer();
             showTime.Interval = 500;
              showTime.Tick += new EventHandler(showTime_tick);
@@ -29,7 +34,6 @@ namespace TicketAssignment
         public int numberOfGuests;
         public int firstTicketNumber;
         private TicketingSystem ticketingSystem;
-     //   public TicketingSystem ticketingSystem;
 
         private void dtpStartTime_ValueChanged(object sender, EventArgs e)
         {

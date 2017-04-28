@@ -29,9 +29,6 @@ namespace TicketAssignment
 
 
         }
-
-
-
         public List<Ticket> IssueTicket;
 
         public TicketingSystem()
@@ -41,11 +38,18 @@ namespace TicketAssignment
         //method will be attached to click handler when user adds ticket 
         public void IssueOneTicket(TimeSlot timeSlot)
         {
-
+            //creates ticket and adds one to the variable storing how many tickets are assigned to each timeslot
             Ticket stuffs = new Ticket(timeSlot);
             IssueTicket.Add(stuffs);
             timeSlot.totalTicketsIssuedPerSlot++;
 
+        }
+        //takes in all info from options menu
+        public void setUp(DateTime startTimeSlot, DateTime endTimeSlot, int minutesPerWindow, int numberOfGuests,
+                          int firstTicketNumber)
+        {
+            createList(startTimeSlot, endTimeSlot, minutesPerWindow);
+            Ticket.setNextTicketNumber(firstTicketNumber);
         }
 
     }

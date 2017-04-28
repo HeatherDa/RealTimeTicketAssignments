@@ -31,10 +31,11 @@ namespace TicketAssignment
             }
 
         }
-
-        public String toString()
+        //allows list to be displayed as text
+        public override string ToString()
         {
-            return startTimeSlot.ToString();
+           string TimeSlot =  String.Format("{0:t}", startTimeSlot);
+            return TimeSlot;
         }
     }
 
