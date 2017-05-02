@@ -33,15 +33,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.numMinPerWindow = new System.Windows.Forms.NumericUpDown();
-            this.numGuestsPerWindow = new System.Windows.Forms.NumericUpDown();
             this.btnOK = new System.Windows.Forms.Button();
-            this.numFirstTicket = new System.Windows.Forms.NumericUpDown();
-            this.dtpStartTime = new System.Windows.Forms.DateTimePicker();
-            this.dtpEndTime = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.numMinPerWindow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numGuestsPerWindow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFirstTicket)).BeginInit();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.txtStart = new System.Windows.Forms.TextBox();
+            this.txtEnd = new System.Windows.Forms.TextBox();
+            this.txtMinutes = new System.Windows.Forms.TextBox();
+            this.txtGuests = new System.Windows.Forms.TextBox();
+            this.txtTicketNumber = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -89,25 +87,9 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "First ticket number:";
             // 
-            // numMinPerWindow
-            // 
-            this.numMinPerWindow.Location = new System.Drawing.Point(123, 11);
-            this.numMinPerWindow.Name = "numMinPerWindow";
-            this.numMinPerWindow.Size = new System.Drawing.Size(120, 20);
-            this.numMinPerWindow.TabIndex = 6;
-            this.numMinPerWindow.ValueChanged += new System.EventHandler(this.numMinPerWindow_ValueChanged);
-            // 
-            // numGuestsPerWindow
-            // 
-            this.numGuestsPerWindow.Location = new System.Drawing.Point(123, 47);
-            this.numGuestsPerWindow.Name = "numGuestsPerWindow";
-            this.numGuestsPerWindow.Size = new System.Drawing.Size(120, 20);
-            this.numGuestsPerWindow.TabIndex = 7;
-            this.numGuestsPerWindow.ValueChanged += new System.EventHandler(this.numGuestsPerWindow_ValueChanged);
-            // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(123, 194);
+            this.btnOK.Location = new System.Drawing.Point(12, 195);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(120, 23);
             this.btnOK.TabIndex = 11;
@@ -115,44 +97,62 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // numFirstTicket
+            // btnExit
             // 
-            this.numFirstTicket.Location = new System.Drawing.Point(123, 151);
-            this.numFirstTicket.Name = "numFirstTicket";
-            this.numFirstTicket.Size = new System.Drawing.Size(120, 20);
-            this.numFirstTicket.TabIndex = 13;
+            this.btnExit.Location = new System.Drawing.Point(139, 195);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(104, 23);
+            this.btnExit.TabIndex = 16;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
             // 
-            // dtpStartTime
+            // txtStart
             // 
-            this.dtpStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpStartTime.Location = new System.Drawing.Point(123, 78);
-            this.dtpStartTime.Name = "dtpStartTime";
-            this.dtpStartTime.ShowUpDown = true;
-            this.dtpStartTime.Size = new System.Drawing.Size(120, 20);
-            this.dtpStartTime.TabIndex = 14;
-            this.dtpStartTime.ValueChanged += new System.EventHandler(this.dtpStartTime_ValueChanged);
+            this.txtStart.Location = new System.Drawing.Point(123, 84);
+            this.txtStart.Name = "txtStart";
+            this.txtStart.Size = new System.Drawing.Size(120, 20);
+            this.txtStart.TabIndex = 17;
             // 
-            // dtpEndTime
+            // txtEnd
             // 
-            this.dtpEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpEndTime.Location = new System.Drawing.Point(123, 112);
-            this.dtpEndTime.Name = "dtpEndTime";
-            this.dtpEndTime.ShowUpDown = true;
-            this.dtpEndTime.Size = new System.Drawing.Size(120, 20);
-            this.dtpEndTime.TabIndex = 15;
-            this.dtpEndTime.ValueChanged += new System.EventHandler(this.dtpEndTime_ValueChanged);
+            this.txtEnd.Location = new System.Drawing.Point(123, 118);
+            this.txtEnd.Name = "txtEnd";
+            this.txtEnd.Size = new System.Drawing.Size(120, 20);
+            this.txtEnd.TabIndex = 18;
+            // 
+            // txtMinutes
+            // 
+            this.txtMinutes.Location = new System.Drawing.Point(123, 13);
+            this.txtMinutes.Name = "txtMinutes";
+            this.txtMinutes.Size = new System.Drawing.Size(120, 20);
+            this.txtMinutes.TabIndex = 19;
+            // 
+            // txtGuests
+            // 
+            this.txtGuests.Location = new System.Drawing.Point(123, 49);
+            this.txtGuests.Name = "txtGuests";
+            this.txtGuests.Size = new System.Drawing.Size(120, 20);
+            this.txtGuests.TabIndex = 20;
+            // 
+            // txtTicketNumber
+            // 
+            this.txtTicketNumber.Location = new System.Drawing.Point(123, 153);
+            this.txtTicketNumber.Name = "txtTicketNumber";
+            this.txtTicketNumber.Size = new System.Drawing.Size(120, 20);
+            this.txtTicketNumber.TabIndex = 21;
             // 
             // Options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(259, 230);
-            this.Controls.Add(this.dtpEndTime);
-            this.Controls.Add(this.dtpStartTime);
-            this.Controls.Add(this.numFirstTicket);
+            this.Controls.Add(this.txtTicketNumber);
+            this.Controls.Add(this.txtGuests);
+            this.Controls.Add(this.txtMinutes);
+            this.Controls.Add(this.txtEnd);
+            this.Controls.Add(this.txtStart);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.numGuestsPerWindow);
-            this.Controls.Add(this.numMinPerWindow);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -160,9 +160,6 @@
             this.Controls.Add(this.label1);
             this.Name = "Options";
             this.Text = "Options";
-            ((System.ComponentModel.ISupportInitialize)(this.numMinPerWindow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numGuestsPerWindow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numFirstTicket)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,11 +172,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown numMinPerWindow;
-        private System.Windows.Forms.NumericUpDown numGuestsPerWindow;
         private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.NumericUpDown numFirstTicket;
-        private System.Windows.Forms.DateTimePicker dtpStartTime;
-        private System.Windows.Forms.DateTimePicker dtpEndTime;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.TextBox txtStart;
+        private System.Windows.Forms.TextBox txtEnd;
+        private System.Windows.Forms.TextBox txtMinutes;
+        private System.Windows.Forms.TextBox txtGuests;
+        private System.Windows.Forms.TextBox txtTicketNumber;
     }
 }

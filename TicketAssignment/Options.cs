@@ -12,6 +12,8 @@ namespace TicketAssignment
 {
     public partial class Options : Form
     {
+
+        public string[] optionList;
         public Options()
         {
             InitializeComponent();
@@ -20,9 +22,16 @@ namespace TicketAssignment
 
             Timer showTime = new Timer();
             showTime.Interval = 500;
-             showTime.Tick += new EventHandler(showTime_tick);
+             //showTime.Tick += new EventHandler(showTime_tick);
             showTime.Start();
-                       //this.Text = DateTime.Now.ToString("HH:mm:ss"); 
+            //this.Text = DateTime.Now.ToString("HH:mm:ss"); 
+
+            // Default values
+            txtMinutes.Text = (5).ToString();
+            txtGuests.Text = (5).ToString();
+            txtStart.Text = DateTime.Now.ToShortTimeString();
+            txtEnd.Text = (DateTime.Now.AddHours(4)).ToShortTimeString();
+            txtTicketNumber.Text = (1).ToString();
 
         }
 
@@ -34,66 +43,121 @@ namespace TicketAssignment
         private TicketingSystem ticketingSystem;
         private TicketDisplay ticketDisplay;
 
-        private void dtpStartTime_ValueChanged(object sender, EventArgs e)
-        {
-            //converting start time to int RL
-            DateTime dtStart = dtpStartTime.Value;
-            string dtStartS = dtStart.Hour.ToString() + dtStart.Minute.ToString() + dtStart.Second.ToString();
-            int startTime = Convert.ToInt32(dtStart);
-        }
+    
 
-        private void dtpEndTime_ValueChanged(object sender, EventArgs e)//make sure endTime not before startTime
-        {
-            //converting end time to Int RL
-            DateTime dtEnd = dtpEndTime.Value;
-            string dtEndS = dtEnd.Hour.ToString() + dtEnd.Minute.ToString() + dtEnd.Second.ToString();
-            endTime = Convert.ToInt32(dtEndS);
-        }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (endTime <= startTime)
+            // Exception handler
+            try
             {
-                //Displays error box if end time is before or the same as start time RL
-                MessageBox.Show("End time must be later than the start time.", "Time entry error");
-                dtpEndTime.Focus();
+                // Validates inputs before proceeding further
+                if (goodDataCheck(txtMinutes, "The Minutes field", 1) && goodDataCheck(txtGuests, "The Number of Allowed Guests field", 1) && goodDataCheck(txtStart, "The Start Time", 2) && goodDataCheck(txtEnd, "The End Time", 2) && goodDataCheck(txtGuests, "The First Ticket Number field", 1))
+                //&& checkDateDiff(Convert.ToDateTime(txtStart), Convert.ToDateTime(txtEnd), Convert.ToInt32(txtMins)))
+                {
+                    // Compiles textbox values in a list for referencing
+                    makeOptionList(txtMinutes.Text, txtGuests.Text, txtStart.Text, txtEnd.Text, txtTicketNumber.Text);
+                    this.Close();
+                }
             }
-            //Could do a switch for this instead
-            //to include specific field name in error RL
-            if (timeWindow == 0 || numberOfGuests == 0 || firstTicketNumber == 0)
+            catch (Exception)
             {
-                MessageBox.Show("Minutes per window, Guests per window, and first ticket number must be greater than zero",
-                    "Error.");
+                MessageBox.Show("An unknown error has occurred");
             }
+        }
 
+        private void makeOptionList(string mins, string guests, string start, string end, string first)
+        {
+            // Converts specific values for incrementing then combines provided values in an array
+            string startStart = start.ToString();
+            start = Convert.ToDateTime(start).AddMinutes(5).ToString();
+            string[] tempList = { mins, guests, start, end, first, startStart };
+            optionList = tempList;
+        }
+
+
+          private bool goodDataCheck(TextBox textboxv, string namev, byte type)
+        {   // type 1 = int; type 2 = datetime
+
+            // Validates inputs and returns message if fails
+            if (!isPresent(textboxv, namev))
+            {
+                //MessageBox.Show(namev + " is empty still");
+                return false;
+            }
+            switch (type)
+            {
+                case 1:
+                    if (!isInt(textboxv, namev))
+                    {
+                        //MessageBox.Show(namev + " is not an integer");
+                        return false;
+                    }
+                    break;
+                case 2:
+                    DateTime datevalue;
+                    if (!DateTime.TryParse(textboxv.Text, out datevalue))
+                    {
+                        MessageBox.Show(namev + " is not a valid time value");
+                        return false;
+                    }
+                    break;
+            }
+            return true;
+        }
+
+        private bool isPresent(TextBox vtextbox, string vname)
+        {
+            // Checks if textbox is empty or not
+            if (vtextbox.Text == "")
+            {
+                MessageBox.Show(vname + " is empty. Try again.", "Missing Entry");
+                vtextbox.Focus();
+                return false;
+            }
+            return true;
+        }
+
+        private bool isInt(TextBox vtextbox, string vname)
+        {
+            // Checks if textbox value can be converted correctly
+            int number = 0;
+            if (Int32.TryParse(vtextbox.Text, out number))
+                return true;
             else
             {
-                //sends info to ticketing system
-                ticketingSystem.setUp( dtpStartTime.Value, dtpEndTime.Value, timeWindow, numberOfGuests,
-                 firstTicketNumber);
-                this.Hide();
-                this.ticketDisplay.Show();
+                MessageBox.Show(vname + " isn't an integer number. Try again.", "Incorrect Entry");
+                vtextbox.Focus();
+                return false;
             }
         }
-        private void numMinPerWindow_ValueChanged(object sender, EventArgs e)
+
+        private bool checkDateDiff(DateTime start, DateTime end, int interval)
         {
-            //Convert time Window to int RL
-            int timeWindow = Convert.ToInt32(numMinPerWindow);
+            // Checks if provided times allow for at least 2 intervals
+            var diff = end.Subtract(start.AddMinutes(interval * 2)).TotalMinutes;
+            //TimeSpan diff = end - (start.AddMinutes(interval * 2));
+            if (diff < 0)
+            {
+                MessageBox.Show("The End Time must allow for at least 2 timeslots.");
+                return false;
+            }
+            return true;
         }
 
-        private void numGuestsPerWindow_ValueChanged(object sender, EventArgs e)
-        {
-            //convert number of guests to Int RL
-            int guestNumber = Convert.ToInt32(numGuestsPerWindow);
-        }
+
 
 
         private void showTime_tick(object sender, EventArgs e)
         {
 
-            Text = "-Options- Current Time: " + DateTime.Now.ToString("HH:mm:ss");
+            Text = "-Options- " + DateTime.Now.ToString("HH:mm:ss");
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
