@@ -34,38 +34,29 @@ namespace TicketAssignment
             {
                 DateTime adjustedStartTime = startTimeSlot.AddMinutes(minutesPerWindow * x);
                 
-                TimeSlot thing = new TimeSlot(adjustedStartTime, minutes);
-                
-                TimeSlots.Add(thing);
+                TimeSlots.Add(new TimeSlot(adjustedStartTime, minutes));
                 
             }
             
             return TimeSlots;
         }
-        public List<Ticket> IssueTicket;
 
-       
+        public List<Ticket> IssueTicket;
 
         public TicketingSystem()
         {
             this.IssueTicket = new List<Ticket>();
         }
+
         //method will be attached to click handler when user adds ticket 
         public void IssueOneTicket(TimeSlot timeSlot)
         {
             //creates ticket and adds one to the variable storing how many tickets are assigned to each timeslot
-            Ticket stuffs = new Ticket(timeSlot);
-            IssueTicket.Add(stuffs);
+            IssueTicket.Add(new Ticket(timeSlot));
             timeSlot.totalTicketsIssuedPerSlot++;
 
         }
 
-        public int checkHowManyTicketsIssued(int totalTicketsIssuedPerSlot)
-        {
-
-
-
-        }
         //takes in all info from options menu
         public void setUp(DateTime startTimeSlot, DateTime endTimeSlot, int minutesPerWindow, int numberOfGuests,
                           int firstTicketNumber)
@@ -73,7 +64,6 @@ namespace TicketAssignment
             createList(startTimeSlot, endTimeSlot, minutesPerWindow);
             Ticket.setNextTicketNumber(firstTicketNumber);
             numberOfTicketsAllowedPerSlot = numberOfGuests;
-            Console.WriteLine(numberOfGuests);
         }
         //creating a list of available time slots
         public List<TimeSlot> showAvailablTimeSlots()
@@ -86,12 +76,11 @@ namespace TicketAssignment
                 bool occursInFuture = TimeSlots[x].startTimeSlot > DateTime.Now;
                 if (ticketsAvailable && occursInFuture)
                 {
-                    Console.WriteLine(TimeSlots[x] + "p");
                     AvailableTimeSlots.Add(TimeSlots[x]);
                 }
 
             }
-            Console.WriteLine(AvailableTimeSlots + "m");
+
             return AvailableTimeSlots;
         }
 
@@ -110,6 +99,7 @@ namespace TicketAssignment
             }
             return OutstandingTickets;
         }
+
         //gets the ticket numbers that are entering the ride
         public List<Ticket> getTicketsBoardingNow()
         {

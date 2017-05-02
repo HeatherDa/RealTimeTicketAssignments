@@ -26,45 +26,48 @@ namespace TicketAssignment
         }
         private void TicketDisplay_Load(object sender, EventArgs e)
         {
-
-            List<TimeSlot> availableTimes = ticketingSystem.showAvailablTimeSlots();
-
-
-            foreach (TimeSlot slot in availableTimes)
-            {
-
-                cboTimeSlots.Items.Add(slot);
-            }
-
+            updateAvailableTimeSlots();
         }
         private void btnIssueTicket_Click(object sender, EventArgs e)
         {
             //gets user selected time slot
             TimeSlot selectedTimeSlot = (TimeSlot) cboTimeSlots.SelectedItem;
+
             //sends selected to method in ticketing system
+            if (selectedTimeSlot != null)
+            {
+                ticketingSystem.IssueOneTicket(selectedTimeSlot);
+                updateAvailableTimeSlots();
+                displayActiveTickets();
+                numberOfOutstandingTickets();
+            }
 
-            ticketingSystem.IssueOneTicket(selectedTimeSlot);
-            displayActiveTickets();
-            numberOfOutstandingTickets();
+        }
 
 
+        private void updateAvailableTimeSlots()
+        {
+            cboTimeSlots.Items.Clear();
+            cboTimeSlots.Items.AddRange(ticketingSystem.showAvailablTimeSlots().ToArray());
+            cboTimeSlots.SelectedIndex = 0;
         }
 
         private void btnOptions_Click(object sender, EventArgs e)
         {
             Options Options = new Options();
             Options.Show();
-
         }
 
 
-        //displays active tickets in the list box
+
+        //gets number of outstanding tickets
         private void numberOfOutstandingTickets()
         {
             List<Ticket> outs = ticketingSystem.getOutstandingTickets();
             int outing = outs.Count;
             lblOutstandingTotal.Text = Convert.ToString(outing);
         }
+        //displays active tickets in the list box
         private void displayActiveTickets()
         {
             lstTickets.Items.Clear();

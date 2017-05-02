@@ -10,15 +10,12 @@ namespace TicketAssignment
     {
         public int ticketNumber;
         public TimeSlot timeSlotAssigned;
-        public string ticketText;
+
         //constructor method
         public Ticket(TimeSlot time)
         {
             this.ticketNumber = newNumber();
             this.timeSlotAssigned = time;
-            //makes a  string for the listbox
-            ticketText = "Ticket " + ticketNumber + ": " + timeSlotAssigned;
-            
         }
 
 
@@ -34,7 +31,10 @@ namespace TicketAssignment
             // returns current value, increments afterwards
             return nextTicketNumber++;
         }
-
+        public override string ToString()
+        {
+            return "Ticket " + ticketNumber + ": " + timeSlotAssigned;
+        }
 
 
 
