@@ -111,7 +111,7 @@ namespace TicketAssignment
             // Checks if textbox is empty or not
             if (vtextbox.Text == "")
             {
-                MessageBox.Show(vname + " is empty. Try again.", "Missing Entry");
+                MessageBox.Show(vname + " is empty. Please fill it in!", "Missing Entry");
                 vtextbox.Focus();
                 return false;
             }
@@ -126,7 +126,7 @@ namespace TicketAssignment
                 return true;
             else
             {
-                MessageBox.Show(vname + " isn't an integer number. Try again.", "Incorrect Entry");
+                MessageBox.Show(vname + " Please enter a number!", "Invalid Entry");
                 vtextbox.Focus();
                 return false;
             }
@@ -156,7 +156,22 @@ namespace TicketAssignment
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        public DateTime End
+        {
+            get
+            {
+                return Convert.ToDateTime(txtEnd.Text);
+            }
+        }
+        public int FirstNum
+        {
+            get
+            {
+                return Convert.ToInt32(txtTicketNumber.Text);
+            }
         }
     }
 
