@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace TicketAssignment
 {
     public class Ticket
     {
         public int ticketNumber;
-        public TimeSlot timeSlotAssigned; 
+        public TimeSlot timeSlotAssigned;
+        public string ticketText;
         //constructor method
         public Ticket(TimeSlot time)
         {
             this.ticketNumber = newNumber();
             this.timeSlotAssigned = time;
+            //makes a  string for the listbox
+            ticketText = "Ticket " + ticketNumber + ": " + timeSlotAssigned;
+            
         }
 
 
@@ -32,10 +35,6 @@ namespace TicketAssignment
             return nextTicketNumber++;
         }
 
-        public override string ToString()
-        {
-            return "Ticket " + ticketNumber + ": " + timeSlotAssigned;
-        }
 
 
 
