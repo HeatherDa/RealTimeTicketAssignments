@@ -63,11 +63,6 @@ namespace TicketAssignment
         public int checkHowManyTicketsIssued(int totalTicketsIssuedPerSlot)
         {
 
-            List<Ticket> outstandingTickets = this.getOutstandingTickets();
-            int outstanding = outstandingTickets.Count;
-            return outstanding;
-           // TicketDisplay.lblOutstandingTotal.Text = "this"; 
-
 
 
         }
@@ -78,6 +73,7 @@ namespace TicketAssignment
             createList(startTimeSlot, endTimeSlot, minutesPerWindow);
             Ticket.setNextTicketNumber(firstTicketNumber);
             numberOfTicketsAllowedPerSlot = numberOfGuests;
+            Console.WriteLine(numberOfGuests);
         }
         //creating a list of available time slots
         public List<TimeSlot> showAvailablTimeSlots()
@@ -90,10 +86,12 @@ namespace TicketAssignment
                 bool occursInFuture = TimeSlots[x].startTimeSlot > DateTime.Now;
                 if (ticketsAvailable && occursInFuture)
                 {
+                    Console.WriteLine(TimeSlots[x] + "p");
                     AvailableTimeSlots.Add(TimeSlots[x]);
                 }
 
             }
+            Console.WriteLine(AvailableTimeSlots + "m");
             return AvailableTimeSlots;
         }
 

@@ -58,7 +58,7 @@ namespace TicketAssignment
                 {
                     // Compiles textbox values in a list for referencing
                     makeOptionList(txtMinutes.Text, txtGuests.Text, txtStart.Text, txtEnd.Text, txtTicketNumber.Text);
-                    ticketingSystem.setUp(this.Start, this.End, this.minutes, numberOfGuests, firstTicketNumber);
+                    ticketingSystem.setUp(this.Start, this.End, this.minutes, this.guests, this.firstTicket);
                     
 
 
@@ -189,6 +189,22 @@ namespace TicketAssignment
                 return Convert.ToDateTime(txtStart.Text);
             }
         }
+        public int guests
+        {
+            get
+            {
+                return Convert.ToInt32(txtGuests.Text);
+            }
+        }
+        public int firstTicket
+        {
+            get
+            {
+                return Convert.ToInt32(txtTicketNumber.Text);
+            }
+        }
+
+
 
 
     }
