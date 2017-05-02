@@ -17,6 +17,7 @@ namespace TicketAssignment
         public Options()
         {
             InitializeComponent();
+            
             ticketingSystem = new TicketingSystem();
             ticketDisplay = new TicketDisplay(ticketingSystem, this);
 
@@ -57,7 +58,15 @@ namespace TicketAssignment
                 {
                     // Compiles textbox values in a list for referencing
                     makeOptionList(txtMinutes.Text, txtGuests.Text, txtStart.Text, txtEnd.Text, txtTicketNumber.Text);
-                    this.Close();
+                    ticketingSystem.setUp(this.Start, this.End, this.minutes, numberOfGuests, firstTicketNumber);
+                    
+
+
+
+                    this.Hide();
+                    
+                    ticketDisplay.Show();
+
                 }
             }
             catch (Exception)
@@ -166,13 +175,22 @@ namespace TicketAssignment
                 return Convert.ToDateTime(txtEnd.Text);
             }
         }
-        public int FirstNum
+        public int minutes
         {
             get
             {
-                return Convert.ToInt32(txtTicketNumber.Text);
+                return Convert.ToInt32(txtMinutes.Text);
             }
         }
+        public DateTime Start
+        {
+            get
+            {
+                return Convert.ToDateTime(txtStart.Text);
+            }
+        }
+
+
     }
 
 

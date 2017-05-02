@@ -14,12 +14,33 @@ namespace TicketAssignment
     {
         private TicketingSystem ticketingSystem;
         private Options options;
+       
 
+        private void TicketDisplay_Load(object sender, EventArgs e)
+        {
+            List<TimeSlot> availableTimes = ticketingSystem.showAvailablTimeSlots();
+            
+            foreach (TimeSlot item in availableTimes)
+            {
+                
+                cboTimeSlots.Items.Add(item);
+            }
+            
+        }
         public TicketDisplay(TicketingSystem ticketingSystem, Options options)
         {
             InitializeComponent();
             this.ticketingSystem = ticketingSystem;
             this.options = options;
+            
+            
+            List<TimeSlot> availableTimes = ticketingSystem.showAvailablTimeSlots();
+            foreach (TimeSlot item in availableTimes)
+            {
+                cboTimeSlots.Items.Add(item);
+            }
+                
+            
         }
 
         private void btnIssueTicket_Click(object sender, EventArgs e)
@@ -29,8 +50,8 @@ namespace TicketAssignment
             //sends selected to method in ticketing system
             ticketingSystem.IssueOneTicket(selectedTimeSlot);
             displayActiveTickets();
-
-
+            int outstanding = ticketingSystem.checkHowManyTicketsIssued(5);
+            lblOutstandingTotal.Text = Convert.ToString(outstanding);
         }
 
         private void btnOptions_Click(object sender, EventArgs e)
@@ -44,7 +65,8 @@ namespace TicketAssignment
         {
 
             // set the list of TimeSlots as an array to the combo box as options
-            cboTimeSlots.Items.AddRange(ticketingSystem.TimeSlots.ToArray());
+            List<TimeSlot> availableTimes = ticketingSystem.showAvailablTimeSlots();
+            cboTimeSlots.Items.AddRange(availableTimes.ToArray());
 
 
         }

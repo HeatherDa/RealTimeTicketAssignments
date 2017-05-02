@@ -8,29 +8,43 @@ using System.Windows.Forms;
 
 namespace TicketAssignment
 {
-    public class TicketingSystem
+    public class TicketingSystem 
     {
+        private TicketDisplay ticketDisplay;
         public int numberOfTicketsAllowedPerSlot;
-        public List<TimeSlot>TimeSlots;
+        public List<TimeSlot> TimeSlots = new List<TimeSlot>();
 
         //creates list of time slots based on option selections
-        public void createList(DateTime startTimeSlot, DateTime endTimeSlot, int minutesPerWindow)
+        public List<TimeSlot> createList(DateTime startTimeSlot, DateTime endTimeSlot, int minutesPerWindow)
         {
+            
             TimeSpan lengthSlot = endTimeSlot.Subtract(startTimeSlot);
-            int minutes = lengthSlot.Minutes;
+            
+            //int length = Convert.ToInt32(lengthSlot.DateTime);
+            TimeSpan length = lengthSlot;
+            //converts to hours then minutes
+            int len = length.Hours;
+                       
+            int minutes = len * 60;            
             int numberofslots = minutes / minutesPerWindow;
-            TimeSlots = new List<TimeSlot>();
+            
+           // TimeSlots = List<TimeSlot>;
 
             for (int x = 0; x < numberofslots; x++)
             {
                 DateTime adjustedStartTime = startTimeSlot.AddMinutes(minutesPerWindow * x);
+                
                 TimeSlot thing = new TimeSlot(adjustedStartTime, minutes);
+                
                 TimeSlots.Add(thing);
+                
             }
-
-
+            
+            return TimeSlots;
         }
         public List<Ticket> IssueTicket;
+
+       
 
         public TicketingSystem()
         {
@@ -46,8 +60,15 @@ namespace TicketAssignment
 
         }
 
-        public void checkHowManyTicketsIssued(int totalTicketsIssuedPerSlot)
+        public int checkHowManyTicketsIssued(int totalTicketsIssuedPerSlot)
         {
+
+            List<Ticket> outstandingTickets = this.getOutstandingTickets();
+            int outstanding = outstandingTickets.Count;
+            return outstanding;
+           // TicketDisplay.lblOutstandingTotal.Text = "this"; 
+
+
 
         }
         //takes in all info from options menu

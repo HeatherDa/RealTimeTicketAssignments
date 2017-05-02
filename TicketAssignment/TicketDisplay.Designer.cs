@@ -34,6 +34,7 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cboTimeSlots = new System.Windows.Forms.ComboBox();
             this.lblNextEntryTime = new System.Windows.Forms.Label();
             this.lblOutstandingTotal = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.lstTickets = new System.Windows.Forms.ListBox();
             this.btnOptions = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.cboTimeSlots = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +70,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ticket Availability";
             // 
+            // cboTimeSlots
+            // 
+            this.cboTimeSlots.FormattingEnabled = true;
+            this.cboTimeSlots.Location = new System.Drawing.Point(126, 75);
+            this.cboTimeSlots.Name = "cboTimeSlots";
+            this.cboTimeSlots.Size = new System.Drawing.Size(127, 21);
+            this.cboTimeSlots.TabIndex = 5;
+            // 
             // lblNextEntryTime
             // 
             this.lblNextEntryTime.AutoSize = true;
@@ -84,9 +92,9 @@
             this.lblOutstandingTotal.AutoSize = true;
             this.lblOutstandingTotal.Location = new System.Drawing.Point(144, 17);
             this.lblOutstandingTotal.Name = "lblOutstandingTotal";
-            this.lblOutstandingTotal.Size = new System.Drawing.Size(13, 13);
+            this.lblOutstandingTotal.Size = new System.Drawing.Size(10, 13);
             this.lblOutstandingTotal.TabIndex = 3;
-            this.lblOutstandingTotal.Text = "_";
+            this.lblOutstandingTotal.Text = "-";
             // 
             // label1
             // 
@@ -143,14 +151,6 @@
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
-            // cboTimeSlots
-            // 
-            this.cboTimeSlots.FormattingEnabled = true;
-            this.cboTimeSlots.Location = new System.Drawing.Point(126, 75);
-            this.cboTimeSlots.Name = "cboTimeSlots";
-            this.cboTimeSlots.Size = new System.Drawing.Size(127, 21);
-            this.cboTimeSlots.TabIndex = 5;
-            // 
             // TicketDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,6 +163,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "TicketDisplay";
             this.Text = "Ticket Program";
+            this.Load += new System.EventHandler(this.TicketDisplay_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -173,8 +174,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label lblNextEntryTime;
-        private System.Windows.Forms.Label lblOutstandingTotal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl1;
         private System.Windows.Forms.Button btnIssueTicket;
@@ -182,6 +181,8 @@
         private System.Windows.Forms.Button btnOptions;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.ComboBox cboTimeSlots;
+        public System.Windows.Forms.Label lblNextEntryTime;
+        public System.Windows.Forms.Label lblOutstandingTotal;
     }
 }
 

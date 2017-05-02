@@ -106,7 +106,6 @@
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-                
             // 
             // txtStart
             // 
@@ -162,6 +161,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Options";
             this.Text = "Options";
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 
