@@ -43,11 +43,14 @@
             this.lstTickets = new System.Windows.Forms.ListBox();
             this.btnOptions = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.lblBoardingNow = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblBoardingNow);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(259, 49);
@@ -151,6 +154,15 @@
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
+            // lblBoardingNow
+            // 
+            this.lblBoardingNow.AutoSize = true;
+            this.lblBoardingNow.Location = new System.Drawing.Point(27, 25);
+            this.lblBoardingNow.Name = "lblBoardingNow";
+            this.lblBoardingNow.Size = new System.Drawing.Size(10, 13);
+            this.lblBoardingNow.TabIndex = 0;
+            this.lblBoardingNow.Text = "-";
+            // 
             // TicketDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,6 +176,8 @@
             this.Name = "TicketDisplay";
             this.Text = "Ticket Program";
             this.Load += new System.EventHandler(this.TicketDisplay_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -183,6 +197,7 @@
         private System.Windows.Forms.ComboBox cboTimeSlots;
         public System.Windows.Forms.Label lblNextEntryTime;
         public System.Windows.Forms.Label lblOutstandingTotal;
+        private System.Windows.Forms.Label lblBoardingNow;
     }
 }
 
