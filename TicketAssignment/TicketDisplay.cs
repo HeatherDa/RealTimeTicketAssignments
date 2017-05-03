@@ -104,7 +104,7 @@ namespace TicketAssignment
             string boardingTickets = "";
             foreach (Ticket item in boarding)
             {
-                boardingTickets += item.ticketNumber;
+                boardingTickets += item.ticketNumber + " ";
             }
             lblBoardingNow.Text = boardingTickets;
 

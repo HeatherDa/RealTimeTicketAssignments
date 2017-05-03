@@ -28,7 +28,7 @@ namespace TicketAssignment
             txtGuests.Text = (5).ToString();
             txtStart.Text = DateTime.Now.ToShortTimeString();
             txtEnd.Text = (DateTime.Now.AddHours(1)).ToShortTimeString();
-            txtTicketNumber.Text = (1).ToString();
+            txtTicketNumber.Text = (4).ToString();
 
         }
 
