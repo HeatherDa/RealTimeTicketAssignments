@@ -21,11 +21,7 @@ namespace TicketAssignment
             ticketingSystem = new TicketingSystem();
             ticketDisplay = new TicketDisplay(ticketingSystem, this);
 
-            Timer showTime = new Timer();
-            showTime.Interval = 500;
-             //showTime.Tick += new EventHandler(showTime_tick);
-            showTime.Start();
-            //this.Text = DateTime.Now.ToString("HH:mm:ss"); 
+
 
             // Default values
             txtMinutes.Text = (5).ToString();
@@ -155,13 +151,6 @@ namespace TicketAssignment
         }
 
 
-
-
-        private void showTime_tick(object sender, EventArgs e)
-        {
-
-            Text = "-Options- " + DateTime.Now.ToString("HH:mm:ss");
-        }
 
         private void btnExit_Click(object sender, EventArgs e)
         {

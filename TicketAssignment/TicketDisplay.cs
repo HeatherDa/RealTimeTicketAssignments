@@ -23,6 +23,11 @@ namespace TicketAssignment
             this.ticketingSystem = ticketingSystem;
             this.options = options;
 
+            Timer showTime = new Timer();
+            showTime.Interval = 500;
+            showTime.Tick += new EventHandler(showTime_tick);
+            showTime.Start();
+
         }
         private void TicketDisplay_Load(object sender, EventArgs e)
         {
@@ -74,6 +79,9 @@ namespace TicketAssignment
             lstTickets.Items.AddRange(ticketingSystem.IssueTicket.ToArray());
             //need to sort list
         }
-        
+        private void showTime_tick(object sender, EventArgs e)
+        {
+            Text = String.Format("{0:T}", DateTime.Now);
+        }
     }
 }
