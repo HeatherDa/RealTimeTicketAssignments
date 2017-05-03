@@ -57,9 +57,6 @@ namespace TicketAssignment
                     Console.WriteLine(this.Start);
                     Console.WriteLine(this.End);
                     ticketingSystem.setUp(this.Start, this.End, this.minutes, this.guests, this.firstTicket);
-                    
-
-
 
                     this.Hide();
                     

@@ -78,8 +78,21 @@ namespace TicketAssignment
 
         private void btnOptions_Click(object sender, EventArgs e)
         {
-            Options Options = new Options();
-            Options.Show();
+            DialogResult dialogResult = MessageBox.Show("This will erase all ticketing information and start a new session. " +
+                "Are you sure you would like to proceed?", "Close form?", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Options Options = new Options();
+                Options.Show();
+                this.Close();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                
+            }
+
+
+           
         }
 
 
