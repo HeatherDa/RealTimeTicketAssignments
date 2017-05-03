@@ -27,7 +27,7 @@ namespace TicketAssignment
             txtMinutes.Text = (5).ToString();
             txtGuests.Text = (5).ToString();
             txtStart.Text = DateTime.Now.ToShortTimeString();
-            txtEnd.Text = (DateTime.Now.AddHours(4)).ToShortTimeString();
+            txtEnd.Text = (DateTime.Now.AddHours(1)).ToShortTimeString();
             txtTicketNumber.Text = (1).ToString();
 
         }
@@ -54,6 +54,8 @@ namespace TicketAssignment
                 {
                     // Compiles textbox values in a list for referencing
                     makeOptionList(txtMinutes.Text, txtGuests.Text, txtStart.Text, txtEnd.Text, txtTicketNumber.Text);
+                    Console.WriteLine(this.Start);
+                    Console.WriteLine(this.End);
                     ticketingSystem.setUp(this.Start, this.End, this.minutes, this.guests, this.firstTicket);
                     
 

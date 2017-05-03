@@ -12,30 +12,23 @@ namespace TicketAssignment
     {
         private TicketDisplay ticketDisplay;
         public int numberOfTicketsAllowedPerSlot;
-        public List<TimeSlot> TimeSlots = new List<TimeSlot>();
+        public List<TimeSlot> TimeSlots;
 
         //creates list of time slots based on option selections
         public List<TimeSlot> createList(DateTime startTimeSlot, DateTime endTimeSlot, int minutesPerWindow)
         {
             
-            TimeSpan lengthSlot = endTimeSlot.Subtract(startTimeSlot);
-            
-            //int length = Convert.ToInt32(lengthSlot.DateTime);
-            TimeSpan length = lengthSlot;
-            //converts to hours then minutes
-            int len = length.Hours;
-                       
-            int minutes = len * 60;            
+            TimeSpan length = endTimeSlot.Subtract(startTimeSlot);
+            int minutes = (int) length.TotalMinutes;
             int numberofslots = minutes / minutesPerWindow;
-            
-           // TimeSlots = List<TimeSlot>;
+            TimeSlots = new List<TimeSlot>();
 
             for (int x = 0; x < numberofslots; x++)
             {
                 DateTime adjustedStartTime = startTimeSlot.AddMinutes(minutesPerWindow * x);
                 
-                TimeSlots.Add(new TimeSlot(adjustedStartTime, minutes));
-                
+                TimeSlots.Add(new TimeSlot(adjustedStartTime, minutesPerWindow));
+                Console.WriteLine();
             }
             
             return TimeSlots;
@@ -46,6 +39,7 @@ namespace TicketAssignment
         public TicketingSystem()
         {
             this.IssueTicket = new List<Ticket>();
+            this.TimeSlots = new List<TimeSlot>();
         }
 
         //method will be attached to click handler when user adds ticket 
