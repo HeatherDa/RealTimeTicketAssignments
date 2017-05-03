@@ -14,7 +14,7 @@ namespace TicketAssignment
     {
         private TicketingSystem ticketingSystem;
         private Options options;
-
+       
 
 
         public TicketDisplay(TicketingSystem ticketingSystem, Options options)
@@ -38,7 +38,7 @@ namespace TicketAssignment
             if (timeSlots.Count > 0)
             {
                 updateTicketsTimer = new Timer();
-                updateTicketsTimer.Interval = (int)ticketingSystem.showAvailablTimeSlots()[0].startTimeSlot.Subtract(DateTime.Now).TotalMilliseconds;
+                updateTicketsTimer.Interval = (int) ticketingSystem.showAvailablTimeSlots()[0].startTimeSlot.Subtract(DateTime.Now).TotalMilliseconds;
                 updateTicketsTimer.Tick += new EventHandler(updateAllTheThings);
                 updateTicketsTimer.Start();
                 Console.Write(updateTicketsTimer.Interval);
@@ -47,7 +47,7 @@ namespace TicketAssignment
         private void btnIssueTicket_Click(object sender, EventArgs e)
         {
             //gets user selected time slot
-            TimeSlot selectedTimeSlot = (TimeSlot)cboTimeSlots.SelectedItem;
+            TimeSlot selectedTimeSlot = (TimeSlot) cboTimeSlots.SelectedItem;
 
             //sends selected to method in ticketing system
             if (selectedTimeSlot != null)
@@ -78,8 +78,21 @@ namespace TicketAssignment
 
         private void btnOptions_Click(object sender, EventArgs e)
         {
-            Options Options = new Options();
-            Options.Show();
+            DialogResult dialogResult = MessageBox.Show("This will erase all ticketing information and start a new session. " +
+                "Are you sure you would like to proceed?", "Close form?", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Options Options = new Options();
+                Options.Show();
+                this.Close();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                
+            }
+
+
+           
         }
 
 
@@ -137,14 +150,5 @@ namespace TicketAssignment
             }
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void lstTickets_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
