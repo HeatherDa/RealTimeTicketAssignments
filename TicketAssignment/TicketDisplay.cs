@@ -32,7 +32,6 @@ namespace TicketAssignment
         private Timer updateTicketsTimer;
         private void TicketDisplay_Load(object sender, EventArgs e)
         {
-
             updateAvailableTimeSlots();
             List<TimeSlot> timeSlots = ticketingSystem.showAvailablTimeSlots();
             if (timeSlots.Count > 0)
@@ -40,15 +39,13 @@ namespace TicketAssignment
                 updateTicketsTimer = new Timer();
                 updateTicketsTimer.Interval = (int) ticketingSystem.showAvailablTimeSlots()[0].startTimeSlot.Subtract(DateTime.Now).TotalMilliseconds;
                 updateTicketsTimer.Tick += new EventHandler(updateAllTheThings);
-                updateTicketsTimer.Start();
-                Console.Write(updateTicketsTimer.Interval);
+                updateTicketsTimer.Start();                
             }
         }
         private void btnIssueTicket_Click(object sender, EventArgs e)
         {
             //gets user selected time slot
             TimeSlot selectedTimeSlot = (TimeSlot) cboTimeSlots.SelectedItem;
-
             //sends selected to method in ticketing system
             if (selectedTimeSlot != null)
             {
@@ -57,10 +54,8 @@ namespace TicketAssignment
                 displayActiveTickets();
                 numberOfOutstandingTickets();
             }
-
         }
-
-
+        //adds the available time slots to the combo box, if slots run out resets 
         private void updateAvailableTimeSlots()
         {
             cboTimeSlots.Items.Clear();
@@ -75,7 +70,7 @@ namespace TicketAssignment
                 cboTimeSlots.ResetText();
             }
         }
-
+//gives warning if you click options 
         private void btnOptions_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("This will erase all ticketing information and start a new session. " +
@@ -89,14 +84,8 @@ namespace TicketAssignment
             else if (dialogResult == DialogResult.No)
             {
                 
-            }
-
-
-           
+            }           
         }
-
-
-
         //gets number of outstanding tickets
         private void numberOfOutstandingTickets()
         {
@@ -105,6 +94,7 @@ namespace TicketAssignment
             lblOutstandingTotal.Text = Convert.ToString(outing);
         }
 
+        //shows the next available time slot
         private void nextTimeSlot()
         {
             lblNextEntryTime.Text = Convert.ToString(ticketingSystem.showAvailablTimeSlots()[0]);
@@ -117,7 +107,7 @@ namespace TicketAssignment
             string boardingTickets = "";
             foreach (Ticket item in boarding)
             {
-                boardingTickets += item.ticketNumber + " ";
+                boardingTickets += item.ticketNumber + ", ";
             }
             lblBoardingNow.Text = boardingTickets;
 
@@ -129,9 +119,10 @@ namespace TicketAssignment
             lstTickets.Items.AddRange(ticketingSystem.getOutstandingTickets().ToArray());
             //need to sort list
         }
+        //shows running timer 
         private void showTime_tick(object sender, EventArgs e)
-        {
-            Text = String.Format("{0:T}", DateTime.Now);
+        {           
+            Text = (String.Format("{0:T}", DateTime.Now) + status);
         }
         //updates tickets based on timer intervals
         private void updateAllTheThings(object sender, EventArgs e)
@@ -142,7 +133,7 @@ namespace TicketAssignment
             boardingNowTickets();
             nextTimeSlot();
 
-            // update timer
+            // update timer for updating tickets
             List<TimeSlot> timeSlots = ticketingSystem.showAvailablTimeSlots();
             if (timeSlots.Count > 0)
             {
@@ -150,5 +141,29 @@ namespace TicketAssignment
             }
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            options.Close();
+        }
+        //determines if the ticketing system is open or closed 
+        string status = "";
+       
+        public string openClose(DateTime start, DateTime end)
+        {
+
+           
+            if (start >= DateTime.Now && end >= DateTime.Now)
+            {
+                status = " (Closed)";
+            }
+            else
+            {
+                status = " (Open)";
+            }
+            Console.WriteLine(status);
+            return status;
+
+        }
     }
 }

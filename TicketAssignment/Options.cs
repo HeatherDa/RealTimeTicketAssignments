@@ -27,8 +27,8 @@ namespace TicketAssignment
             txtMinutes.Text = (5).ToString();
             txtGuests.Text = (5).ToString();
             txtStart.Text = DateTime.Now.ToShortTimeString();
-            txtEnd.Text = (DateTime.Now.AddHours(1)).ToShortTimeString();
-            txtTicketNumber.Text = (4).ToString();
+            txtEnd.Text = (DateTime.Now.AddHours(4)).ToShortTimeString();
+            txtTicketNumber.Text = (1).ToString();
 
         }
 
@@ -39,7 +39,7 @@ namespace TicketAssignment
         public int firstTicketNumber;
         private TicketingSystem ticketingSystem;
         private TicketDisplay ticketDisplay;
-
+         
     
 
 
@@ -57,7 +57,7 @@ namespace TicketAssignment
                     Console.WriteLine(this.Start);
                     Console.WriteLine(this.End);
                     ticketingSystem.setUp(this.Start, this.End, this.minutes, this.guests, this.firstTicket);
-                    
+                    ticketDisplay.openClose(this.Start, this.End);
 
 
 

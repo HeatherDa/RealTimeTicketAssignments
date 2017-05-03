@@ -12,11 +12,9 @@ namespace TicketAssignment
     {
         public int numberOfTicketsAllowedPerSlot;
         public List<TimeSlot> TimeSlots;
-
         //creates list of time slots based on option selections
         public List<TimeSlot> createList(DateTime startTimeSlot, DateTime endTimeSlot, int minutesPerWindow)
-        {
-            
+        {           
             TimeSpan length = endTimeSlot.Subtract(startTimeSlot);
             int minutes = (int) length.TotalMinutes;
             int numberofslots = minutes / minutesPerWindow;
@@ -92,12 +90,10 @@ namespace TicketAssignment
             }
             return OutstandingTickets;
         }
-
         //gets the ticket numbers that are entering the ride
         public List<Ticket> getTicketsBoardingNow()
         {
             List<Ticket> boardingNowTickets = new List<Ticket>();
-
             for (int x = 0; x < IssueTicket.Count; x++)
             {
                 Ticket ticket = IssueTicket[x];
@@ -111,7 +107,6 @@ namespace TicketAssignment
             }
             return boardingNowTickets;
         }
-
     }
 }
 

@@ -137,7 +137,6 @@
             this.lstTickets.Name = "lstTickets";
             this.lstTickets.Size = new System.Drawing.Size(215, 124);
             this.lstTickets.TabIndex = 2;
-            this.lstTickets.SelectedIndexChanged += new System.EventHandler(this.lstTickets_SelectedIndexChanged);
             // 
             // btnOptions
             // 
