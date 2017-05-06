@@ -8,26 +8,28 @@ using System.Windows.Forms;
 
 namespace TicketAssignment
 {
-    public class TicketingSystem 
+    public class TicketingSystem
     {
         public int numberOfTicketsAllowedPerSlot;
         public List<TimeSlot> TimeSlots;
+
         //creates list of time slots based on option selections
         public List<TimeSlot> createList(DateTime startTimeSlot, DateTime endTimeSlot, int minutesPerWindow)
-        {           
+        {
+
             TimeSpan length = endTimeSlot.Subtract(startTimeSlot);
-            int minutes = (int) length.TotalMinutes;
+            int minutes = (int)length.TotalMinutes;
             int numberofslots = minutes / minutesPerWindow;
             TimeSlots = new List<TimeSlot>();
 
             for (int x = 0; x < numberofslots; x++)
             {
                 DateTime adjustedStartTime = startTimeSlot.AddMinutes(minutesPerWindow * x);
-                
+
                 TimeSlots.Add(new TimeSlot(adjustedStartTime, minutesPerWindow));
                 Console.WriteLine();
             }
-            
+
             return TimeSlots;
         }
 
@@ -59,7 +61,7 @@ namespace TicketAssignment
         //creating a list of available time slots
         public List<TimeSlot> showAvailablTimeSlots()
         {
-            List<TimeSlot>AvailableTimeSlots = new List<TimeSlot>();
+            List<TimeSlot> AvailableTimeSlots = new List<TimeSlot>();
 
             for (int x = 0; x < TimeSlots.Count; x++)
             {
@@ -90,10 +92,12 @@ namespace TicketAssignment
             }
             return OutstandingTickets;
         }
+
         //gets the ticket numbers that are entering the ride
         public List<Ticket> getTicketsBoardingNow()
         {
             List<Ticket> boardingNowTickets = new List<Ticket>();
+
             for (int x = 0; x < IssueTicket.Count; x++)
             {
                 Ticket ticket = IssueTicket[x];
@@ -122,17 +126,20 @@ namespace TicketAssignment
 
             Ticket[] ticketSlots = new Ticket[totalSlots * numberOfTicketsAllowedPerSlot];
 
-            List<Ticket> oldOutstanding = getOutstandingTickets();//outstanding;//current outstandingTicket's list
+            List<Ticket> oldOutstanding = getOutstandingTickets();
+            //outstanding;//current outstandingTicket's list
 
             foreach (Ticket t in oldOutstanding)
 
             {
                 foreach (TimeSlot s in slots)
                 {
-                    if (t.timeSlotAssigned.startTimeSlot == s.startTimeSlot)//do this to get correct index
+                    if (t.timeSlotAssigned.startTimeSlot == s.startTimeSlot)
+                        //do this to get correct index
                     {
                         int c = slots.IndexOf(s);
-                        int ind = c * numberOfTicketsAllowedPerSlot + slotCounts[c];//eg. 0(first time slot)*4(tickets per slot)+0(number of tickets in that slot already)= 0(first index); 1*4+1= 5(5th index); etc
+                        int ind = c * numberOfTicketsAllowedPerSlot + slotCounts[c];
+                        //eg. 0(first time slot)*4(tickets per slot)+0(number of tickets in that slot already)= 0(first index); 1*4+1= 5(5th index); etc
                         ticketSlots[ind] = t;
                         slotCounts[c]++;
                     }
@@ -142,11 +149,12 @@ namespace TicketAssignment
             {
                 if (ticketSlots[x] != null)
                 {
-                    sorted.Add(ticketSlots[x]);//add the ticket associated with that count to sorted
+                    sorted.Add(ticketSlots[x]);
+                    //add the ticket associated with that count to sorted
                 }
             }
             return sorted;
         }
+       
     }
 }
-
