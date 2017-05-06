@@ -107,6 +107,46 @@ namespace TicketAssignment
             }
             return boardingNowTickets;
         }
+        public List<Ticket> sortIt()//this method assumes that datavalidation for number of tickets assigned per slot has already been done
+
+        {
+            List<Ticket> sorted = new List<Ticket>();
+
+            List<TimeSlot> slots = showAvailablTimeSlots();
+
+            int totalSlots = slots.Count;
+
+            int[] slotCounts = new int[totalSlots];
+
+            //make array who's length is equal to the total possible number of slots
+
+            Ticket[] ticketSlots = new Ticket[totalSlots * numberOfTicketsAllowedPerSlot];
+
+            List<Ticket> oldOutstanding = getOutstandingTickets();//outstanding;//current outstandingTicket's list
+
+            foreach (Ticket t in oldOutstanding)
+
+            {
+                foreach (TimeSlot s in slots)
+                {
+                    if (t.timeSlotAssigned.startTimeSlot == s.startTimeSlot)//do this to get correct index
+                    {
+                        int c = slots.IndexOf(s);
+                        int ind = c * numberOfTicketsAllowedPerSlot + slotCounts[c];//eg. 0(first time slot)*4(tickets per slot)+0(number of tickets in that slot already)= 0(first index); 1*4+1= 5(5th index); etc
+                        ticketSlots[ind] = t;
+                        slotCounts[c]++;
+                    }
+                }
+            }
+            for (int x = 0; x < ticketSlots.Length; x++)
+            {
+                if (ticketSlots[x] != null)
+                {
+                    sorted.Add(ticketSlots[x]);//add the ticket associated with that count to sorted
+                }
+            }
+            return sorted;
+        }
     }
 }
 

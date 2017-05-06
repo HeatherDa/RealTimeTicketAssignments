@@ -32,7 +32,7 @@ namespace TicketAssignment
         private Timer updateTicketsTimer;
         private void TicketDisplay_Load(object sender, EventArgs e)
         {
-            updateAvailableTimeSlots();
+            //updateAvailableTimeSlots();
             List<TimeSlot> timeSlots = ticketingSystem.showAvailablTimeSlots();
             if (timeSlots.Count > 0)
             {
@@ -70,9 +70,10 @@ namespace TicketAssignment
                 cboTimeSlots.ResetText();
             }
         }
-//gives warning if you click options 
+        
         private void btnOptions_Click(object sender, EventArgs e)
         {
+            //Displays Dialog prompting confirmation to return to options menu
             DialogResult dialogResult = MessageBox.Show("This will erase all ticketing information and start a new session. " +
                 "Are you sure you would like to proceed?", "Close form?", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -116,8 +117,8 @@ namespace TicketAssignment
         private void displayActiveTickets()
         {
             lstTickets.Items.Clear();
-            lstTickets.Items.AddRange(ticketingSystem.getOutstandingTickets().ToArray());
-            //need to sort list
+            List<Ticket> sorted = ticketingSystem.sortIt();
+            lstTickets.Items.AddRange(sorted.ToArray());
         }
         //shows running timer 
         private void showTime_tick(object sender, EventArgs e)
